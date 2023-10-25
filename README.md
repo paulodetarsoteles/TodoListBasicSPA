@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 
+## Details 
+
+Esse é um projeto frontend básico de estudo de uma SPA usando Angular com Typescript de uma playlist do André Baltiere (balta.io)
+
+- Link: https://www.youtube.com/playlist?list=PLHlHvK2lnJneQPfbOvUait1MtAoXeYhtL 
+
+- Ele é basicamente um Um cadastro de tarefas em memória (TODO List) 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
