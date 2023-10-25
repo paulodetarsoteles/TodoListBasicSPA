@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TodoListBasicSPA';
+  public todos: any[] = [];
+  public tittle: string = 'Minhas tarefas';
+
+  constructor() {
+    this.todos.push('Passear com o cachorro');
+    this.todos.push('Ir ao supermercado');
+    this.todos.push('Cortar o cabelo');
+  }
 }
