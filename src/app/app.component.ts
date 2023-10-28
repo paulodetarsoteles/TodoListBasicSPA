@@ -11,6 +11,8 @@ export class AppComponent {
   public title1: string = 'Minhas tarefas';
   public title2: string = 'Minhas tarefas alteradas';
   public title: string = this.title1;
+  public todoTitle: string = 'Lista: ';
+  public todoEmpty: string = 'Nenhum item na lista...';
   public alterTitle: boolean = false;
 
   constructor() {
@@ -23,31 +25,28 @@ export class AppComponent {
   alterarTitle(): void {
     if (this.alterTitle == false) {
       this.alterTitle = true;
-    }
-    else
-      this.alterTitle = false;
-
-    if (this.alterTitle == true) {
       this.title = this.title2;
-      return;
     }
-
-    this.title = this.title1;
+    else {
+      this.alterTitle = false;
+      this.title = this.title1;
+    }
   }
 
   remove(todo: Todo): void {
     const index: number = this.todos.indexOf(todo);
+
     if (index !== -1)
       this.todos.splice(index, 1);
     else
       return;
   }
 
-  markAsDone() {
-
+  markAsDone(todo: Todo): void {
+    todo.done = true;
   }
 
-  markAsUndone() {
-
+  markAsUndone(todo: Todo): void {
+    todo.done = false;
   }
 }

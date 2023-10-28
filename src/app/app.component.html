@@ -1,15 +1,29 @@
 <div>
-  <button (click)="alterarTitle()">Alterar Título</button>
   <h1>{{title}}</h1>
+  <button (click)="alterarTitle()">Alterar Título</button>
 </div>
+<hr>
 <div>
-  <ul>
-    <li *ngFor="let todo of todos">
-      {{todo.id}}. {{todo.name}} - {{todo.done}}
-      <span *ngIf="!todo.done"> | <button>Concluir</button></span>
-      <span *ngIf="todo.done"> | <button>Refazer</button></span>
-      <span> | <button>Remover</button>
-      </span>
-    </li>
-  </ul>
+  <h3>{{todoTitle}}</h3>
+  <div *ngIf="todos.length < 1">
+    <p>{{todoEmpty}}</p>
+  </div>
+  <div *ngIf="todos.length > 0">
+    <ul>
+      <li *ngFor="let todo of todos">
+        <span>
+          {{todo.id}}. {{todo.name}} - {{todo.done}} |
+        </span>
+        <span *ngIf="!todo.done">
+          <button (click)="markAsDone(todo)">Concluir</button> |
+        </span>
+        <span *ngIf="todo.done">
+          <button (click)="markAsUndone(todo)">Refazer</button> |
+        </span>
+        <span>
+          <button (click)="remove(todo)">Remover</button>
+        </span>
+      </li>
+    </ul>
+  </div>
 </div>
