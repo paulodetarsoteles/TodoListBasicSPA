@@ -34,4 +34,20 @@ export class AppComponent {
 
     this.title = this.title1;
   }
+
+  remove(todo: Todo): void {
+    const index: number = this.todos.indexOf(todo);
+    if (index !== -1)
+      this.todos.splice(index, 1);
+    else
+      return;
+  }
+
+  markAsDone() {
+
+  }
+
+  markAsUndone() {
+
+  }
 }
