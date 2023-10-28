@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public todos: any[] = [];
+  public todos: Todo[] = [];
   public title1: string = 'Minhas tarefas';
   public title2: string = 'Minhas tarefas alteradas';
   public title: string = this.title1;
   public alterTitle: boolean = false;
 
   constructor() {
-    this.todos.push('Passear com o cachorro');
-    this.todos.push('Ir ao supermercado');
-    this.todos.push('Cortar o cabelo');
+    this.todos.push(new Todo(1, 'Passear com o cachorro', true));
+    this.todos.push(new Todo(2, 'Ir ao supermercado', false));
+    this.todos.push(new Todo(3, 'Tirar o lixo', false));
   }
 
   alterarTitle(): void {
