@@ -5,7 +5,11 @@
 <div>
   <ul>
     <li *ngFor="let todo of todos">
-      {{todo.id}}. {{todo.name}} - {{todo.done}} | <button>Concluir</button> | <button>Remover</button>
+      {{todo.id}}. {{todo.name}} - {{todo.done}}
+      <span *ngIf="!todo.done"> | <button>Concluir</button></span>
+      <span *ngIf="todo.done"> | <button>Refazer</button></span>
+      <span> | <button>Remover</button>
+      </span>
     </li>
   </ul>
 </div>
