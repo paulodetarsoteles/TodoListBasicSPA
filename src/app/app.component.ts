@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Todo } from 'src/models/todo.model';
 
 @Component({
@@ -14,12 +15,16 @@ export class AppComponent {
   public todoTitle: string = 'Lista: ';
   public todoEmpty: string = 'Nenhum item na lista...';
   public alterTitle: boolean = false;
+  public form: FormGroup;
 
-  constructor() {
-    this.todos.push(new Todo(1, 'Passear com o cachorro', true));
-    this.todos.push(new Todo(2, 'Ir ao supermercado', false));
-    this.todos.push(new Todo(3, 'Tirar o lixo', false));
-    this.todos.push(new Todo(4, 'Cortar o cabelo', false));
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      title: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30)
+      ])]
+    });
   }
 
   alterarTitle(): void {
@@ -33,13 +38,15 @@ export class AppComponent {
     }
   }
 
-  remove(todo: Todo): void {
-    const index: number = this.todos.indexOf(todo);
+  add(): void {
+    const id = this.todos.length + 1;
+    const title = this.form.controls['title'].value;
+    this.todos.push(new Todo(id, title, false));
+    this.clear();
+  }
 
-    if (index !== -1)
-      this.todos.splice(index, 1);
-    else
-      return;
+  clear() {
+    this.form.reset();
   }
 
   markAsDone(todo: Todo): void {
@@ -48,5 +55,14 @@ export class AppComponent {
 
   markAsUndone(todo: Todo): void {
     todo.done = false;
+  }
+
+  remove(todo: Todo): void {
+    const index: number = this.todos.indexOf(todo);
+
+    if (index !== -1)
+      this.todos.splice(index, 1);
+    else
+      return;
   }
 }

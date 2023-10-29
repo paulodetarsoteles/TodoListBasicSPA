@@ -8,7 +8,7 @@
   <div *ngIf="todos.length < 1">
     <p>{{todoEmpty}}</p>
   </div>
-  <div *ngIf="todos.length > 0">
+  <div>
     <ul>
       <li *ngFor="let todo of todos">
         <span>
@@ -29,19 +29,14 @@
 </div>
 
 <div>
-  <form>
-    <div>
-      <fieldset>
-        <div>
-          <label>Tarefa</label>
-        </div>
-        <div>
-          <input type="text">
-        </div>
-        <div>
-          <button>Salvar</button>
-        </div>
-      </fieldset>
-    </div>
+  <form [formGroup]="form">
+    <fieldset>
+      <label>Tarefa: </label>
+      <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title"><span> - </span>
+      <button [disabled]="form.invalid" (click)="add()">Salvar</button>
+      <div>
+        <small *ngIf="form.invalid && !form.pristine ">Este campo deve conter entre 5 e 30 caracteres</small>
+      </div>
+    </fieldset>
   </form>
 </div>
