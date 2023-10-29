@@ -1,7 +1,6 @@
 <div  class="divTodo">
   <div>
-    <h1>{{title}}</h1>
-    <button (click)="alterarTitle()">Alterar Título</button>
+    <h1 class="animated tada">{{title}}</h1>
   </div>
   <hr>
   <div>
@@ -10,19 +9,19 @@
       <p>{{todoEmpty}}</p>
     </div>
     <div>
-      <ul>
+      <ul class="ulTodo">
         <li *ngFor="let todo of todos">
           <span>
-            {{todo.id}}. {{todo.name}} - {{todo.done}} |
+            {{todo.id}}. {{todo.name}} - {{todo.done}}
           </span>
           <span *ngIf="!todo.done">
-            <button (click)="markAsDone(todo)">Concluir</button> |
+            <button class="buttonLi" (click)="markAsDone(todo)">CONCLUIR</button>
           </span>
           <span *ngIf="todo.done">
-            <button (click)="markAsUndone(todo)">Refazer</button> |
+            <button class="buttonLi" (click)="markAsUndone(todo)">REFAZER</button>
           </span>
           <span>
-            <button (click)="remove(todo)">Remover</button>
+            <button class="buttonLi" (click)="remove(todo)">REMOVER</button>
           </span>
         </li>
       </ul>
@@ -34,7 +33,7 @@
       <fieldset>
         <label>Tarefa: </label>
         <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title"><span> - </span>
-        <button [disabled]="form.invalid" (click)="add()">Salvar</button>
+        <button class="buttonLi" [disabled]="form.invalid" (click)="add()">SALVAR</button>
         <div>
           <small *ngIf="form.invalid && !form.pristine ">Este campo deve conter entre 5 e 30 caracteres</small>
         </div>

@@ -10,12 +10,9 @@ import { Todo } from 'src/models/todo.model';
 
 export class AppComponent {
   public todos: Todo[] = [];
-  public title1: string = 'Minhas tarefas';
-  public title2: string = 'Minhas tarefas alteradas';
-  public title: string = this.title1;
+  public title: string = 'Minhas tarefas';
   public todoTitle: string = 'Lista: ';
   public todoEmpty: string = 'Nenhum item na lista...';
-  public alterTitle: boolean = false;
   public form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -27,17 +24,6 @@ export class AppComponent {
         Validators.maxLength(30)
       ])]
     });
-  }
-
-  alterarTitle(): void {
-    if (this.alterTitle == false) {
-      this.alterTitle = true;
-      this.title = this.title2;
-    }
-    else {
-      this.alterTitle = false;
-      this.title = this.title1;
-    }
   }
 
   add(): void {
