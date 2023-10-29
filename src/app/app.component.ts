@@ -7,6 +7,7 @@ import { Todo } from 'src/models/todo.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   public todos: Todo[] = [];
   public title1: string = 'Minhas tarefas';
@@ -18,6 +19,7 @@ export class AppComponent {
   public form: FormGroup;
 
   constructor(private fb: FormBuilder) {
+    this.load();
     this.form = this.fb.group({
       title: ['', Validators.compose([
         Validators.required,
@@ -42,6 +44,7 @@ export class AppComponent {
     const id = this.todos.length + 1;
     const title = this.form.controls['title'].value;
     this.todos.push(new Todo(id, title, false));
+    this.save();
     this.clear();
   }
 
@@ -51,10 +54,12 @@ export class AppComponent {
 
   markAsDone(todo: Todo): void {
     todo.done = true;
+    this.save();
   }
 
   markAsUndone(todo: Todo): void {
     todo.done = false;
+    this.save();
   }
 
   remove(todo: Todo): void {
@@ -62,7 +67,19 @@ export class AppComponent {
 
     if (index !== -1)
       this.todos.splice(index, 1);
+
+    this.save();
+  }
+
+  save(): void {
+    sessionStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+  load(): void {
+    const data = sessionStorage.getItem('todos');
+    if (data)
+      this.todos = JSON.parse(data);
     else
-      return;
+      this.todos = [];
   }
 }
