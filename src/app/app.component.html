@@ -1,42 +1,44 @@
-<div>
-  <h1>{{title}}</h1>
-  <button (click)="alterarTitle()">Alterar Título</button>
-</div>
-<hr>
-<div>
-  <h3>{{todoTitle}}</h3>
-  <div *ngIf="todos.length < 1">
-    <p>{{todoEmpty}}</p>
-  </div>
+<div  class="divTodo">
   <div>
-    <ul>
-      <li *ngFor="let todo of todos">
-        <span>
-          {{todo.id}}. {{todo.name}} - {{todo.done}} |
-        </span>
-        <span *ngIf="!todo.done">
-          <button (click)="markAsDone(todo)">Concluir</button> |
-        </span>
-        <span *ngIf="todo.done">
-          <button (click)="markAsUndone(todo)">Refazer</button> |
-        </span>
-        <span>
-          <button (click)="remove(todo)">Remover</button>
-        </span>
-      </li>
-    </ul>
+    <h1>{{title}}</h1>
+    <button (click)="alterarTitle()">Alterar Título</button>
   </div>
-</div>
+  <hr>
+  <div>
+    <h3>{{todoTitle}}</h3>
+    <div *ngIf="todos.length < 1">
+      <p>{{todoEmpty}}</p>
+    </div>
+    <div>
+      <ul>
+        <li *ngFor="let todo of todos">
+          <span>
+            {{todo.id}}. {{todo.name}} - {{todo.done}} |
+          </span>
+          <span *ngIf="!todo.done">
+            <button (click)="markAsDone(todo)">Concluir</button> |
+          </span>
+          <span *ngIf="todo.done">
+            <button (click)="markAsUndone(todo)">Refazer</button> |
+          </span>
+          <span>
+            <button (click)="remove(todo)">Remover</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<div>
-  <form [formGroup]="form">
-    <fieldset>
-      <label>Tarefa: </label>
-      <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title"><span> - </span>
-      <button [disabled]="form.invalid" (click)="add()">Salvar</button>
-      <div>
-        <small *ngIf="form.invalid && !form.pristine ">Este campo deve conter entre 5 e 30 caracteres</small>
-      </div>
-    </fieldset>
-  </form>
+  <div>
+    <form [formGroup]="form">
+      <fieldset>
+        <label>Tarefa: </label>
+        <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title"><span> - </span>
+        <button [disabled]="form.invalid" (click)="add()">Salvar</button>
+        <div>
+          <small *ngIf="form.invalid && !form.pristine ">Este campo deve conter entre 5 e 30 caracteres</small>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </div>
