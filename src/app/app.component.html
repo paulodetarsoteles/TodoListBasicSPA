@@ -1,6 +1,6 @@
 <div  class="divTodo">
   <div>
-    <h1 class="animated tada">{{title}}</h1>
+    <h1>{{title}}</h1>
   </div>
   <hr>
   <div>
@@ -10,19 +10,11 @@
     </div>
     <div>
       <ul class="ulTodo">
-        <li *ngFor="let todo of todos">
-          <span>
-            {{todo.id}}. {{todo.name}} - {{todo.done}}
-          </span>
-          <span *ngIf="!todo.done">
-            <button class="buttonLi" (click)="markAsDone(todo)">CONCLUIR</button>
-          </span>
-          <span *ngIf="todo.done">
-            <button class="buttonLi" (click)="markAsUndone(todo)">REFAZER</button>
-          </span>
-          <span>
+        <li class="liTodo" *ngFor="let todo of todos">
+            <span>{{todo.id}}. {{todo.name}} - {{todo.done}}</span>
+            <button class="buttonLi" (click)="markAsDone(todo)" *ngIf="!todo.done">CONCLUIR</button>
+            <button class="buttonLi" (click)="markAsUndone(todo)" *ngIf="todo.done">REFAZER</button>
             <button class="buttonLi" (click)="remove(todo)">REMOVER</button>
-          </span>
         </li>
       </ul>
     </div>

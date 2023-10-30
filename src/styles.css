@@ -16,8 +16,8 @@ h1 {
 }
 
 .divTodo {
-  min-height: 10em;
-  min-width: 28em;
+  min-height: 20em;
+  min-width: 40em;
   align-items: center;
   justify-content: center;
   background: #2b4d69;
@@ -33,14 +33,14 @@ h1 {
 
 .ulTodo {
   text-align: left;
-  margin: 5px;
-  padding: 5px;
+  margin: 10px;
+  padding: 10px;
   list-style: none;
 }
 
-.li {
-  padding: 10px;
-  margin: 10px;
+.liTodo {
+  padding: 5px;
+  margin: 5px;
   font-size: 1em;
   font-style: normal;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
