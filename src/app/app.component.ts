@@ -10,6 +10,7 @@ import { Todo } from 'src/models/todo.model';
 
 export class AppComponent {
   public todos: Todo[] = [];
+  public mode: string = 'list';
   public title: string = 'Minhas tarefas';
   public todoTitle: string = 'Lista: ';
   public todoEmpty: string = 'Nenhum item na lista...';
@@ -59,6 +60,7 @@ export class AppComponent {
 
   save(): void {
     sessionStorage.setItem('todos', JSON.stringify(this.todos));
+    this.changeMode('list');
   }
 
   load(): void {
@@ -67,5 +69,9 @@ export class AppComponent {
       this.todos = JSON.parse(data);
     else
       this.todos = [];
+  }
+
+  changeMode(mode: string) {
+    this.mode = mode;
   }
 }

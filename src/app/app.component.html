@@ -1,9 +1,9 @@
-<div  class="divTodo">
+<div class="divTodo">
   <div>
     <h1>{{title}}</h1>
   </div>
   <hr>
-  <div>
+  <div *ngIf="mode == 'list'">
     <h3>{{todoTitle}}</h3>
     <div *ngIf="todos.length < 1">
       <p>{{todoEmpty}}</p>
@@ -11,25 +11,47 @@
     <div>
       <ul class="ulTodo">
         <li class="liTodo" *ngFor="let todo of todos">
-            <span>{{todo.id}}. {{todo.name}} - {{todo.done}}</span>
-            <button class="buttonLi" (click)="markAsDone(todo)" *ngIf="!todo.done">CONCLUIR</button>
-            <button class="buttonLi" (click)="markAsUndone(todo)" *ngIf="todo.done">REFAZER</button>
-            <button class="buttonLi" (click)="remove(todo)">REMOVER</button>
+          <span>{{todo.id}}. {{todo.name}} - {{todo.done}}</span>
+          <button class="buttonLi" *ngIf="!todo.done" (click)="markAsDone(todo)">
+            <i class="fas fa-check"></i>
+            CONCLUIR
+          </button>
+          <button class="buttonLi" *ngIf="todo.done" (click)="markAsUndone(todo)">
+            <i class="fas fa-undo"></i>
+            REFAZER
+          </button>
+          <button class="buttonLi" (click)="remove(todo)">
+            <i class="fas fa-trash"></i>
+            REMOVER
+          </button>
         </li>
       </ul>
     </div>
   </div>
 
-  <div>
+  <div id="modal" *ngIf="mode == 'add'">
     <form [formGroup]="form">
-      <fieldset>
+      <fieldset class="formTodo">
         <label>Tarefa: </label>
-        <input type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title"><span> - </span>
-        <button class="buttonLi" [disabled]="form.invalid" (click)="add()">SALVAR</button>
+        <input class="inputTodo" type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title">
+        <button class="buttonLi" [disabled]="form.invalid" (click)="add()">
+          <i class="fas fa-plus"></i>
+          SALVAR
+        </button>
         <div>
-          <small *ngIf="form.invalid && !form.pristine ">Este campo deve conter entre 5 e 30 caracteres</small>
+          <small class="caution" *ngIf="form.invalid && !form.pristine ">* Este campo deve conter entre 5 e 30
+            caracteres</small>
         </div>
       </fieldset>
     </form>
   </div>
+
+  <button class="buttonAddCancel" (click)="changeMode('add')" *ngIf="mode == 'list'">
+    <i class="fas fa-plus"></i>
+    Nova Tarefa
+  </button>
+  <button class="buttonAddCancel" (click)="changeMode('list')" *ngIf="mode == 'add'">
+    <i class="fas fa-times"></i>
+    Cancelar
+  </button>
 </div>
