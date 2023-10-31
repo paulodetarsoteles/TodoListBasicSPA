@@ -31,15 +31,13 @@ h1 {
   box-shadow: 3px 4px 14px 0px rgb(0, 0, 0, 0.39);
 }
 
-.formTodo {
-  border-style: none;
-  padding: 20px;
-}
-
 .inputTodo {
+  min-height: 20px;
+  min-width: 30em;
   border-style: none;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 4px;
+  align-items: left;
 }
 
 .ulTodo {
@@ -81,11 +79,10 @@ h1 {
   font-size: 1em;
   font-style: italic;
   width: 80%;
-  display: flex;
   padding: 5px;
   margin: 10px;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   background-color: #ce2222;
   color: rgb(255, 255, 255);
   border-radius: 4px;
@@ -95,7 +92,7 @@ h1 {
 .buttonAdd {
   cursor: pointer;
   border: none;
-  background-color: #38b36b;
+  background-color: #316fa8;
   color: #fff;
   font-size: 1em;
   opacity: 0.8;
@@ -107,6 +104,25 @@ h1 {
 }
 
 .buttonAdd:hover {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.buttonSave {
+  cursor: pointer;
+  border: none;
+  background-color: #39b639;
+  color: #ffffff;
+  font-size: 1em;
+  opacity: 0.8;
+  transition: opacity 0.5s;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 3px 4px 14px 0px rgba(27, 27, 27, 0.39);
+}
+
+.buttonSave:hover {
   opacity: 1;
   transition: opacity 0.3s;
 }

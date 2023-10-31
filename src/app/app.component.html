@@ -31,26 +31,28 @@
 
   <div id="modal" *ngIf="mode == 'add'">
     <form [formGroup]="form">
-      <fieldset class="formTodo">
-        <label>Tarefa: </label>
+      <p><label>Tarefa: </label></p>
+      <div>
         <input class="inputTodo" type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title">
-        <button class="buttonLi" [disabled]="form.invalid" (click)="add()">
-          <i class="fas fa-plus"></i>
-          SALVAR
-        </button>
-        <div class="caution" *ngIf="form.invalid && !form.pristine">
-          <small>* Este campo deve conter entre 5 e 30 caracteres</small>
+        <div>
+          <button class="buttonSave" [disabled]="form.invalid" (click)="add()">
+            <i class="fas fa-plus"></i>
+            SALVAR
+          </button>
+          <button class="buttonCancel" (click)="changeMode('list')">
+            <i class="fas fa-times"></i>
+            Cancelar
+          </button>
         </div>
-      </fieldset>
+      </div>
+      <div *ngIf="form.invalid && !form.pristine">
+        <p><small class="caution"> Este campo deve conter entre 5 e 30 caracteres </small></p>
+      </div>
     </form>
   </div>
 
   <button class="buttonAdd" (click)="changeMode('add')" *ngIf="mode == 'list'">
     <i class="fas fa-plus"></i>
     Nova Tarefa
-  </button>
-  <button class="buttonCancel" (click)="changeMode('list')" *ngIf="mode == 'add'">
-    <i class="fas fa-times"></i>
-    Cancelar
   </button>
 </div>
