@@ -80,7 +80,10 @@ h1 {
 .caution {
   font-size: 1em;
   font-style: italic;
-  color: rgb(233, 104, 130);
+  padding: 5px;
+  margin: 10px;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
 }
 
 .buttonAddCancel {
