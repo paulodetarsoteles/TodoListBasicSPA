@@ -11,24 +11,22 @@
     <div>
       <ul class="ulTodo">
         <li class="liTodo" *ngFor="let todo of todos">
-          <span>{{todo.id}}. {{todo.name}} - {{todo.done}}</span>
+          <span>
+            {{todo.name}}
+          </span>
           <button class="buttonLi" *ngIf="!todo.done" (click)="markAsDone(todo)">
-            <i class="fas fa-check"></i>
-            CONCLUIR
+            <i class="far fa-check-circle"></i>
           </button>
           <button class="buttonLi" *ngIf="todo.done" (click)="markAsUndone(todo)">
             <i class="fas fa-undo"></i>
-            REFAZER
           </button>
-          <button class="buttonLi" (click)="remove(todo)">
-            <i class="fas fa-trash"></i>
-            REMOVER
+          <button class="buttonLi" style="background-color: crimson; color: rgb(255, 255, 255);" (click)="remove(todo)">
+            <i class="fas fa-trash-alt"></i>
           </button>
         </li>
       </ul>
     </div>
   </div>
-
   <div id="modal" *ngIf="mode == 'add'">
     <form [formGroup]="form">
       <p><label>Tarefa: </label></p>
@@ -36,12 +34,10 @@
         <input class="inputTodo" type="text" placeholder="Título da tarefa" maxlength="30" formControlName="title">
         <div>
           <button class="buttonSave" [disabled]="form.invalid" (click)="add()">
-            <i class="fas fa-plus"></i>
-            SALVAR
+            <i class="fas fa-check"></i> Salvar
           </button>
           <button class="buttonCancel" (click)="changeMode('list')">
-            <i class="fas fa-times"></i>
-            Cancelar
+            <i class="fas fa-times"></i> Cancelar
           </button>
         </div>
       </div>
@@ -50,7 +46,6 @@
       </div>
     </form>
   </div>
-
   <button class="buttonAdd" (click)="changeMode('add')" *ngIf="mode == 'list'">
     <i class="fas fa-plus"></i>
     Nova Tarefa
