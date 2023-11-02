@@ -2,13 +2,13 @@
   <div>
     <h1>{{title}}</h1>
   </div>
-  <hr>
-  <div *ngIf="mode == 'list'">
+  <br />
+  <div style="width: 100%;" *ngIf="mode == 'list'">
     <h3>{{todoTitle}}</h3>
     <div *ngIf="todos.length < 1">
       <p>{{todoEmpty}}</p>
     </div>
-    <div>
+    <div style="width: 100%;">
       <ul class="ulTodo">
         <li class="liTodo" *ngFor="let todo of todos">
           <span>
